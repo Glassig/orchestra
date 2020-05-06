@@ -16,13 +16,15 @@ Can debug using react-devtools: `npm install -g react-devtools`, then from a ter
 ## todos
 
 - I need to redo all my mountains so that they have the same height, for the design sake. Right now the padding is different for all.
-- Implement navigation (`react native navigation`)
-  - The quest detail screen should be a `navigation detail` screen.
-  - The other could be tabs?
-    - map
-    - questlog
-    - profile
+  - Because of tab navigation, one mountain should transition into it's neighbor. so it looks like one landscape.
+- ~~Implement navigation (`react native navigation`)~~
+  - ~~The quest detail screen should be a `navigation detail` screen.~~
+  - ~~The other could be tabs?~~
+    - ~~map~~
+    - ~~questlog~~
+    - ~~profile~~
   - startscreen and create profile?
+    - neeed to figure out how to do best
 - connect to db
   - hasura + graphql
 - jwt login something something
