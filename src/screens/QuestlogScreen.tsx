@@ -5,7 +5,7 @@ import Layout from "./Layout";
 import { Quest } from "../components/Quest/Quest";
 import Link from "./../components/Utils/Link";
 import { skyBlue } from "../styling/colors";
-import Mountains from "./../styling/images/mission_detail.svg";
+import Mountains from "./../styling/images/missions_list.svg";
 
 const svgHeight: number = 165; //this is different for different svgs
 

@@ -8,7 +8,7 @@ import Mountains from "./../styling/images/mission_detail.svg";
 const QuestDetail = ({ route, navigation }) => {
   const questId = route.params.id;
   return (
-    <Layout gradient={[skyBlue.dark, skyBlue.light]} mountainHeight={136} Mountains={Mountains}>
+    <Layout gradient={[skyBlue.dark, skyBlue.light]} mountainHeight={187} Mountains={Mountains}>
       <View style={styles.wrapper}>
         <Text>Quest Detail id: {questId}</Text>
       </View>
