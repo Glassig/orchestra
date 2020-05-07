@@ -21,14 +21,23 @@ import QuestDetail from "./screens/QuestDetailScreen";
 import Map from "./screens/MapScreen";
 import Profile from "./screens/ProfileScreen";
 
-import { skyRed } from "./styling/colors";
+import { skyBlue } from "./styling/colors";
 
 const Stack = createStackNavigator();
 
 const MainView = () => {
   return (
-    <Tab.Navigator initialRouteName="Questlog">
-      <Tab.Screen name="Map" component={Map} />
+    <Tab.Navigator
+      initialRouteName="Questlog"
+      tabBarOptions={{
+        style: { backgroundColor: skyBlue.dark, elevation: 0 },
+        activeTintColor: "white",
+        renderIndicator: () => null,
+        labelStyle: {
+          fontSize: 16,
+        },
+      }}>
+      <Tab.Screen name="Map" component={Map} options={{}} />
       <Tab.Screen name="Questlog" component={Questlog} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
@@ -38,17 +47,17 @@ const MainView = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{
-            headerStyle: {
-              backgroundColor: skyRed.dark,
-            },
-          }}
+          name="QuestDetail"
+          component={QuestDetail}
+          options={{ headerShown: true, headerTransparent: true, headerTintColor: "#fff" }}
         />
-        <Stack.Screen name="QuestDetail" component={QuestDetail} />
         <Stack.Screen name="MainView" component={MainView} />
       </Stack.Navigator>
     </NavigationContainer>
