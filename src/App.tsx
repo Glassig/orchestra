@@ -34,10 +34,11 @@ const MainView = () => {
         activeTintColor: "white",
         renderIndicator: () => null,
         labelStyle: {
-          fontSize: 16,
+          textTransform: "uppercase",
+          fontSize: 18,
         },
       }}>
-      <Tab.Screen name="Map" component={Map} options={{}} />
+      <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Questlog" component={Questlog} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
