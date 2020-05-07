@@ -21,6 +21,8 @@ import QuestDetail from "./screens/QuestDetailScreen";
 import Map from "./screens/MapScreen";
 import Profile from "./screens/ProfileScreen";
 
+import { skyRed } from "./styling/colors";
+
 const Stack = createStackNavigator();
 
 const MainView = () => {
@@ -37,7 +39,15 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerStyle: {
+              backgroundColor: skyRed.dark,
+            },
+          }}
+        />
         <Stack.Screen name="QuestDetail" component={QuestDetail} />
         <Stack.Screen name="MainView" component={MainView} />
       </Stack.Navigator>
