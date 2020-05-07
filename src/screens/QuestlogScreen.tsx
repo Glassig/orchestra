@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Text, Button } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 
 import Layout from "./Layout";
 import { Quest } from "../components/Quest/Quest";
+import Link from "./../components/Utils/Link";
 import { skyBlue } from "../styling/colors";
 import Mountains from "./../styling/images/mission_detail.svg";
 
@@ -14,15 +15,14 @@ const Questlog = ({ navigation }) => {
       <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollview}>
         <View>
           <Quest />
-          <Button
-            title={"Go to Quest"}
+          <Link
             onPress={() => {
-              /* 1. Navigate to the Details route with params */
               navigation.navigate("QuestDetail", {
                 questId: 86,
               });
-            }}
-          />
+            }}>
+            Go to Quest
+          </Link>
         </View>
         <View style={styles.paddingView}></View>
       </ScrollView>

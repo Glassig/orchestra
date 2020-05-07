@@ -1,13 +1,14 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Dimensions, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import { SvgProps } from "react-native-svg";
 
-const Layout: React.FC<{ gradient: string[]; mountainHeight: number; Mountains: React.FC<SvgProps> }> = ({
-  gradient,
-  mountainHeight,
-  Mountains,
-  children,
-}) => {
+const Layout: React.FC<{
+  gradient: string[];
+  mountainHeight: number;
+  Mountains: React.FC<SvgProps>;
+  children: React.ReactNode;
+}> = ({ gradient, mountainHeight, Mountains, children }) => {
   return (
     <SafeAreaView style={{ height: "100%" }}>
       <LinearGradient colors={[...gradient]} style={styles.linearGradient}></LinearGradient>
