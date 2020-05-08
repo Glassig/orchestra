@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { Text } from "react-native";
 
 import Layout from "./Layout";
 import { skyBlue } from "../styling/colors";
@@ -12,7 +12,5 @@ const Map = ({ navigation }) => {
     </Layout>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default Map;

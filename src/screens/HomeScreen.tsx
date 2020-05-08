@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet, Button } from "react-native";
 
 import Layout from "./Layout";
 import Link from "./../components/Utils/Link";
@@ -13,7 +12,5 @@ const Home = ({ navigation }) => {
     </Layout>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default Home;
