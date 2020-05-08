@@ -1,6 +1,6 @@
 import React from "react";
-import {Text} from "react-native";
+import { Text } from "react-native";
 
-export const Quest: React.FC = (props) => {
-  return <Text>am a quest</Text>
-}
+export const Quest: React.FC = (_) => {
+  return <Text>am a quest</Text>;
+};
