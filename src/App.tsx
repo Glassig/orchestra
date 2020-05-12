@@ -12,8 +12,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-
-const Tab = createMaterialTopTabNavigator();
+import { SafeAreaProvider, useSafeArea } from "react-native-safe-area-context";
 
 import Home from "./screens/HomeScreen";
 import Questlog from "./screens/QuestlogScreen";
@@ -24,13 +23,15 @@ import Profile from "./screens/ProfileScreen";
 import { skyBlue } from "./styling/colors";
 
 const Stack = createStackNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 const MainView = () => {
+  const insets = useSafeArea();
   return (
     <Tab.Navigator
       initialRouteName="Questlog"
       tabBarOptions={{
-        style: { backgroundColor: skyBlue.dark, elevation: 0 },
+        style: { backgroundColor: skyBlue.dark, elevation: 0, paddingTop: insets.top },
         activeTintColor: "white",
         renderIndicator: () => null,
         labelStyle: {
@@ -47,21 +48,23 @@ const MainView = () => {
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen
-          name="QuestDetail"
-          component={QuestDetail}
-          options={{ headerShown: true, headerTransparent: true, headerTintColor: "#fff" }}
-        />
-        <Stack.Screen name="MainView" component={MainView} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            name="QuestDetail"
+            component={QuestDetail}
+            options={{ headerShown: true, headerTransparent: true, headerTintColor: "#fff" }}
+          />
+          <Stack.Screen name="MainView" component={MainView} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

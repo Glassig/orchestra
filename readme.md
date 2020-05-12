@@ -6,6 +6,8 @@ Orchestra is an application that was previously written using plain js & plain c
 
 I followed the [Getting started guide](https://reactnative.dev/docs/0.60/getting-started), for React Native CLI.
 
+You need to install: `brew install watchman` and `sudo gem install cocoapods`, then go into `ios` folder and type `pod install`.
+
 The base template is the [Typescript one](https://reactnative.dev/docs/typescript).
 
 ## notes

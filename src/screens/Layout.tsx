@@ -1,7 +1,8 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, Dimensions, View } from "react-native";
+import { StyleSheet, Dimensions, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { SvgProps } from "react-native-svg";
+import { SafeAreaView, useSafeArea } from "react-native-safe-area-context";
 
 const Layout: React.FC<{
   gradient: string[];
@@ -9,9 +10,10 @@ const Layout: React.FC<{
   Mountains: React.FC<SvgProps>;
   children: React.ReactNode;
 }> = ({ gradient, mountainHeight, Mountains, children }) => {
+  const insets = useSafeArea();
   return (
-    <SafeAreaView style={{ height: "100%" }}>
-      <LinearGradient colors={[...gradient]} style={styles.linearGradient}></LinearGradient>
+    <SafeAreaView style={{ height: "100%", paddingTop: -insets.top }}>
+      <LinearGradient colors={[...gradient]} style={styles.linearGradient} />
       {children}
       <View style={{ ...styles.mountainsView, height: mountainHeight }} pointerEvents={"none"}>
         <Mountains />
