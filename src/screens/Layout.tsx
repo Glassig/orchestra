@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Dimensions, View } from "react-native";
+import { StyleSheet, Dimensions, View, StatusBar } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { SvgProps } from "react-native-svg";
 import { SafeAreaView, useSafeArea } from "react-native-safe-area-context";
@@ -13,6 +13,7 @@ const Layout: React.FC<{
   const insets = useSafeArea();
   return (
     <SafeAreaView style={{ height: "100%", paddingTop: -insets.top }}>
+      <StatusBar backgroundColor={gradient[0]} />
       <LinearGradient colors={[...gradient]} style={styles.linearGradient} />
       {children}
       <View style={{ ...styles.mountainsView, height: mountainHeight }} pointerEvents={"none"}>
