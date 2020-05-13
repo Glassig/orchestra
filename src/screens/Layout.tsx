@@ -12,8 +12,8 @@ const Layout: React.FC<{
 }> = ({ gradient, mountainHeight, Mountains, children }) => {
   const insets = useSafeArea();
   return (
-    <SafeAreaView style={{ height: "100%", paddingTop: -insets.top }}>
-      <StatusBar backgroundColor={gradient[0]} />
+    <SafeAreaView style={{ height: "100%", paddingTop: insets.top }}>
+      <StatusBar backgroundColor={gradient[0]} animated={true} />
       <LinearGradient colors={[...gradient]} style={styles.linearGradient} />
       {children}
       <View style={{ ...styles.mountainsView, height: mountainHeight }} pointerEvents={"none"}>
