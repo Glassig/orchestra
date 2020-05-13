@@ -10,6 +10,8 @@ You need to install: `brew install watchman` and `sudo gem install cocoapods`, t
 
 The base template is the [Typescript one](https://reactnative.dev/docs/typescript).
 
+You need environment variables, and keys and such, in a file called `.env.js`. There is an example file called `.example.env.js`.
+
 ## notes
 
 I have installed styled-components, but is not yet using it.
