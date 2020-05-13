@@ -15,18 +15,35 @@ The base template is the [Typescript one](https://reactnative.dev/docs/typescrip
 I have installed styled-components, but is not yet using it.
 Can debug using react-devtools: `npm install -g react-devtools`, then from a terminal use `react-devtools`.
 
-## todos
+## todos implementation
 
-- I need to redo all my mountains so that they have the same height, for the design sake. Right now the padding is different for all.
-  - Because of tab navigation, one mountain should transition into it's neighbor. so it looks like one landscape.
 - ~~Implement navigation (`react native navigation`)~~
   - ~~The quest detail screen should be a `navigation detail` screen.~~
   - ~~The other could be tabs?~~
     - ~~map~~
     - ~~questlog~~
     - ~~profile~~
-  - startscreen and create profile?
-    - neeed to figure out how to do best
+  - startscreen with signup/login
 - connect to db
   - hasura + graphql
-- jwt login something something
+  - Show quests
+- Auth, JWT
+- Map
+  - Display map
+  - Show icon from a quest
+  - Get when user is in area for a quest
+- Notifications
+
+## Todo design
+
+- Startscreen to have a login button and signup
+- Signup flow
+- Profile screen
+- Create Quest
+  - Assign to user
+- App icon for all sizes and better design
+
+## Todo extra
+
+- I need to redo all my mountains so that they have the same height, for the design sake. Right now the padding is different for all.
+  - Because of tab navigation, one mountain should transition into it's neighbor. so it looks like one landscape.
