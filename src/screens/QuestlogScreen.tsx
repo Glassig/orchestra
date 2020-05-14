@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Text } from "react-native";
+import { ActivityIndicator, StyleSheet, ScrollView, View, Text } from "react-native";
 import { gql, useQuery } from "@apollo/client";
 
 import Layout from "./Layout";
@@ -10,6 +10,7 @@ import Mountains from "./../styling/images/missions_list.svg";
 
 const svgHeight: number = 165; //this is different for different svgs
 
+// How to do this,
 const getQuests = gql`
   query MyQuery2 {
     quests {
@@ -25,7 +26,7 @@ const getQuests = gql`
 
 const Quests = () => {
   const { loading, error, data } = useQuery(getQuests);
-  if (loading) return <Text>Loading...</Text>;
+  if (loading) return <ActivityIndicator color={"#f00"} />;
   if (error) return <Text>ERROR! {error.message}</Text>;
   return data.quests.map((value) => <Text key={value.title}>{value.title}</Text>);
 };
