@@ -12,7 +12,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { SafeAreaProvider, useSafeArea } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import Home from "./screens/HomeScreen";
 import Questlog from "./screens/QuestlogScreen";
@@ -26,12 +26,11 @@ const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
 const MainView = () => {
-  const insets = useSafeArea();
   return (
     <Tab.Navigator
       initialRouteName="Questlog"
       tabBarOptions={{
-        style: { backgroundColor: skyBlue.dark, elevation: 0, paddingTop: insets.top },
+        style: { backgroundColor: skyBlue.dark, elevation: 0 },
         activeTintColor: "white",
         renderIndicator: () => null,
         labelStyle: {
