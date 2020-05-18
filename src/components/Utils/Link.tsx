@@ -1,12 +1,16 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const Link: React.FC<{ onPress: () => void; children: React.ReactNode }> = ({ onPress, children }) => {
+export const TextLink: React.FC<{ onPress: () => void; children: React.ReactNode }> = ({ onPress, children }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
       <Text style={styles.text}>{children}</Text>
     </TouchableOpacity>
   );
+};
+
+export const ComponentLink: React.FC<{ onPress: () => void; children: React.ReactNode }> = ({ onPress, children }) => {
+  return <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity>;
 };
 
 const styles = StyleSheet.create({
@@ -20,5 +24,3 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
 });
-
-export default Link;
