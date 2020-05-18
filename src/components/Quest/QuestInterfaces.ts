@@ -4,18 +4,36 @@
 
 type uuid = string;
 
+// I don't know how to do it
+// <(x, y), r> is the format, otherwise.
+type circle = string | null;
+
 export interface Quest {
-  id: uuid;
   title: string;
   description: string;
-  reward: string;
+  type: QuestType;
+  id: uuid;
+  reward: string | null;
   creator_id: uuid;
-  // map_circle: circle  GIS STUFF
-  type: QuestType; //should be enum
+  map_circle: circle; //GIS STUFF
+  quest_statuses: [
+    {
+      status: QuestStatus;
+    }
+  ];
+  creator: {
+    displayname: string;
+  };
 }
 
 export enum QuestType {
   KILL_MONSTERS = 0,
   DISCOVER = 1,
   TRAVERSE = 2,
+}
+
+export enum QuestStatus {
+  NEW = 0,
+  IN_PROGRESS = 1,
+  COMPLETED = 2,
 }

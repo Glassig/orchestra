@@ -12,7 +12,7 @@ const Layout: React.FC<{
 }> = ({ gradient, mountainHeight, Mountains, children }) => {
   const insets = useSafeArea();
   return (
-    <SafeAreaView style={{ height: "100%", paddingTop: insets.top }}>
+    <SafeAreaView style={{ ...styles.safeArea, paddingTop: insets.top }}>
       <StatusBar backgroundColor={gradient[0]} animated={true} />
       <LinearGradient colors={[...gradient]} style={styles.linearGradient} />
       {children}
@@ -24,6 +24,11 @@ const Layout: React.FC<{
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    height: "100%",
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
   linearGradient: {
     position: "absolute",
     right: 0,
