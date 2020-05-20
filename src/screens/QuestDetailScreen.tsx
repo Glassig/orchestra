@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     fontVariant: ["small-caps"],
   },
   description: {
+    fontFamily: "Montserrat",
     color: "white",
     fontSize: 16,
   },

@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import MText from "./../Utils/MText";
 import { Quest, QuestType } from "./QuestInterfaces";
 
 import Sword from "./../../styling/images/sword.svg";
@@ -12,10 +13,10 @@ const QuestlogEntry: React.FC<{ quest: Quest }> = ({ quest }) => {
     <View style={styles.wrapper}>
       <Sword />
       <View style={styles.text}>
-        <Text style={styles.title}>{quest.title}</Text>
-        <Text style={styles.description} numberOfLines={1}>
+        <MText style={styles.title}>{quest.title}</MText>
+        <MText style={styles.description} numberOfLines={1}>
           {quest.description}
-        </Text>
+        </MText>
       </View>
     </View>
   );
