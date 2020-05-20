@@ -1,10 +1,11 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, StyleSheet } from "react-native";
+import MText from "./MText";
 
 export const TextLink: React.FC<{ onPress: () => void; children: React.ReactNode }> = ({ onPress, children }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
-      <Text style={styles.text}>{children}</Text>
+      <MText styles={styles.text}>{children}</MText>
     </TouchableOpacity>
   );
 };
@@ -20,7 +21,9 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     alignSelf: "center",
-    fontSize: 16,
-    textTransform: "uppercase",
+    fontSize: 24,
+    letterSpacing: 8,
+    textDecorationLine: "underline",
+    fontVariant: ["small-caps"],
   },
 });

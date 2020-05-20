@@ -35,7 +35,8 @@ const MainView = () => {
         activeTintColor: "white",
         renderIndicator: () => null,
         labelStyle: {
-          textTransform: "uppercase",
+          fontFamily: "Montserrat-Medium",
+          fontVariant: ["small-caps"],
           fontSize: 18,
         },
       }}>

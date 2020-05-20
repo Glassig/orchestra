@@ -38,6 +38,8 @@
 		54077A24A7F445FBA1F895AD /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D9D24C8923F4DAAB6CE5ABC /* Montserrat-SemiBoldItalic.ttf */; };
 		00502B60C9B84303ADC7A832 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26AE888B08CE4F9BBDE1B482 /* Montserrat-Thin.ttf */; };
 		85076156624F4EC38AC5D782 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21439EF6D9E64FC28D067EE0 /* Montserrat-ThinItalic.ttf */; };
+		331A69821D5F4DA0A7BF85BC /* penna.otf in Resources */ = {isa = PBXBuildFile; fileRef = 313E8BF7791148A1878720CE /* penna.otf */; };
+		D5B8DB8F37C246338D258255 /* Penna.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7954575D1F01407E87BE809D /* Penna.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		2D9D24C8923F4DAAB6CE5ABC /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Montserrat-SemiBoldItalic.ttf"; path = "../src/styling/assets/fonts/Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		26AE888B08CE4F9BBDE1B482 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; name = "Montserrat-Thin.ttf"; path = "../src/styling/assets/fonts/Montserrat-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		21439EF6D9E64FC28D067EE0 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Montserrat-ThinItalic.ttf"; path = "../src/styling/assets/fonts/Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		313E8BF7791148A1878720CE /* penna.otf */ = {isa = PBXFileReference; name = "penna.otf"; path = "../src/styling/assets/fonts/penna.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7954575D1F01407E87BE809D /* Penna.otf */ = {isa = PBXFileReference; name = "Penna.otf"; path = "../src/styling/assets/fonts/Penna.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +259,8 @@
 				2D9D24C8923F4DAAB6CE5ABC /* Montserrat-SemiBoldItalic.ttf */,
 				26AE888B08CE4F9BBDE1B482 /* Montserrat-Thin.ttf */,
 				21439EF6D9E64FC28D067EE0 /* Montserrat-ThinItalic.ttf */,
+				313E8BF7791148A1878720CE /* penna.otf */,
+				7954575D1F01407E87BE809D /* Penna.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -420,6 +426,8 @@
 				54077A24A7F445FBA1F895AD /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				00502B60C9B84303ADC7A832 /* Montserrat-Thin.ttf in Resources */,
 				85076156624F4EC38AC5D782 /* Montserrat-ThinItalic.ttf in Resources */,
+				331A69821D5F4DA0A7BF85BC /* penna.otf in Resources */,
+				D5B8DB8F37C246338D258255 /* Penna.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,11 +1,12 @@
 import React from "react";
-import { ActivityIndicator, StyleSheet, ScrollView, View, Text } from "react-native";
+import { ActivityIndicator, StyleSheet, ScrollView, View } from "react-native";
 import { gql, useQuery } from "@apollo/client";
 
 import Layout from "./Layout";
 import QuestlogEntry from "../components/Quest/QuestlogEntry";
 import { Quest } from "../components/Quest/QuestInterfaces";
-import { TextLink, ComponentLink } from "./../components/Utils/Link";
+import { ComponentLink } from "./../components/Utils/Link";
+import MText from "./../components/Utils/MText";
 import { skyBlue } from "../styling/colors";
 import Mountains from "./../styling/images/missions_list.svg";
 
@@ -48,7 +49,7 @@ const getQuests = gql`
 const Quests: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { loading, error, data } = useQuery(getQuests);
   if (loading) return <ActivityIndicator color={"#f00"} />;
-  if (error) return <Text>ERROR! {error.message}</Text>;
+  if (error) return <MText>ERROR! {error.message}</MText>;
   return data.quests.map((value: Quest) => (
     <ComponentLink
       onPress={() => {

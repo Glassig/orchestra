@@ -13,8 +13,8 @@ const QuestlogEntry: React.FC<{ quest: Quest }> = ({ quest }) => {
     <View style={styles.wrapper}>
       <Sword />
       <View style={styles.text}>
-        <MText style={styles.title}>{quest.title}</MText>
-        <MText style={styles.description} numberOfLines={1}>
+        <MText styles={styles.title}>{quest.title}</MText>
+        <MText styles={styles.description} nrOfLines={1}>
           {quest.description}
         </MText>
       </View>
@@ -32,11 +32,10 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   title: {
-    color: "white",
     fontSize: 24,
+    fontVariant: ["small-caps"],
   },
   description: {
-    color: "white",
     fontSize: 16,
   },
 });
