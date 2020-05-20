@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import MText from "./MText";
 
 const CakeIpsum = () => {
   return (
     <View>
-      <Text>
+      <MText>
         Cupcake ipsum dolor sit amet lollipop wafer pudding. Chocolate biscuit ice cream muffin pudding caramels
         topping. Tart powder cotton candy macaroon lemon drops cookie cotton candy chupa chups gingerbread. Jelly-o
         halvah jelly-o tootsie roll. Chocolate bar brownie biscuit croissant cake brownie caramels. Jelly-o caramels
@@ -35,7 +36,7 @@ const CakeIpsum = () => {
         Chocolate cake chocolate cake fruitcake marzipan tiramisu cake. Topping soufflé topping caramels dragée bear
         claw marshmallow. Chocolate cheesecake halvah liquorice tootsie roll croissant. Oat cake dragée lemon drops
         candy apple pie. Cupcake sesame snaps cotton candy liquorice cupcake donut gummies marshmallow.
-      </Text>
+      </MText>
     </View>
   );
 };

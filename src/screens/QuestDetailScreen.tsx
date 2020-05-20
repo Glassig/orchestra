@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import Layout from "./Layout";
 import { Quest } from "./../components/Quest/QuestInterfaces";
+import MText from "./../components/Utils/MText";
 import { skyBlue } from "../styling/colors";
 import Mountains from "./../styling/images/mission_detail.svg";
 
@@ -16,11 +17,11 @@ const QuestDetail: React.FC<{ route: any; navigation: any }> = ({ route, navigat
   return (
     <Layout gradient={[skyBlue.dark, skyBlue.light]} mountainHeight={187} Mountains={Mountains}>
       <View style={styles.wrapper}>
-        <Text style={styles.title}>{quest.title}</Text>
-        <Text style={styles.description}>{quest.description}</Text>
-        {quest.map_circle && <Text>Position: {quest.map_circle}</Text>}
-        {quest.reward && <Text>Reward: {quest.reward}</Text>}
-        <Text style={styles.creator}>//{quest.creator.displayname}</Text>
+        <MText styles={styles.title}>{quest.title}</MText>
+        <MText styles={styles.description}>{quest.description}</MText>
+        {quest.map_circle && <MText>Position: {quest.map_circle}</MText>}
+        {quest.reward && <MText>Reward: {quest.reward}</MText>}
+        <MText styles={styles.creator}>//{quest.creator.displayname}</MText>
       </View>
     </Layout>
   );
@@ -31,18 +32,17 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   title: {
-    color: "white",
     fontSize: 24,
     fontVariant: ["small-caps"],
+    textAlign: "center",
   },
   description: {
-    fontFamily: "Montserrat",
-    color: "white",
     fontSize: 16,
   },
   creator: {
-    color: "white",
-    fontSize: 16,
+    fontSize: 32,
+    fontFamily: "Penna",
+    textAlign: "right",
   },
 });
 
