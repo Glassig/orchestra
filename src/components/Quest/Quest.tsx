@@ -1,6 +1,6 @@
 import React from "react";
-import { Text } from "react-native";
+import MText from "./../Utils/MText";
 
 export const Quest: React.FC = (_) => {
-  return <Text>am a quest</Text>;
+  return <MText>am a quest</MText>;
 };
