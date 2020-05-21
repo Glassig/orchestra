@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
 import MapboxGL from "@react-native-mapbox-gl/maps";
 
@@ -14,7 +14,15 @@ const Map = ({ navigation }) => {
     <Layout gradient={[skyBlue.dark, skyBlue.light]} mountainHeight={198} Mountains={Mountains}>
       <View style={styles.page}>
         <View style={styles.container}>
-          <MapboxGL.MapView style={styles.map} logoEnabled={false} />
+          <MapboxGL.MapView
+            style={styles.map}
+            styleURL={MapboxGL.StyleURL.Light}
+            logoEnabled={false}
+            attributionPosition={{ left: 8, bottom: 8 }} // The i in a circle position, it has to be present
+          >
+            <MapboxGL.Camera followZoomLevel={12} followUserLocation />
+            <MapboxGL.UserLocation />
+          </MapboxGL.MapView>
         </View>
       </View>
     </Layout>
