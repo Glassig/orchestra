@@ -30,6 +30,7 @@ const MainView = () => {
   return (
     <Tab.Navigator
       initialRouteName="Questlog"
+      swipeEnabled={false} // map is hard to use when swipe:abel
       tabBarOptions={{
         style: { backgroundColor: skyBlue.dark, elevation: 0, paddingTop: insets.top },
         activeTintColor: "white",

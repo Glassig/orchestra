@@ -47,6 +47,7 @@ const getQuests = gql`
 // `;
 
 const Quests: React.FC<{ navigation: any }> = ({ navigation }) => {
+  console.log("beep");
   const { loading, error, data } = useQuery(getQuests);
   if (loading) return <ActivityIndicator color={"#f00"} />;
   if (error) return <MText>ERROR! {error.message}</MText>;
