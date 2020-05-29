@@ -14,7 +14,9 @@ const Home = ({ navigation }) => {
         <MText styles={styles.title} nrOfLines={1} fit={true}>
           Orchestra
         </MText>
-        <TextLink onPress={() => navigation.navigate("MainView")}>Step Out</TextLink>
+        <TextLink onPress={() => navigation.navigate("MainView")} textStyle={styles.link}>
+          Step Out
+        </TextLink>
       </View>
     </Layout>
   );
@@ -31,6 +33,11 @@ const styles = StyleSheet.create({
     fontSize: 100,
     top: 75,
     position: "absolute",
+  },
+  link: {
+    alignSelf: "center",
+    letterSpacing: 8,
+    fontSize: 24,
   },
 });
 

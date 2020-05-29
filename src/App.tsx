@@ -29,7 +29,7 @@ const MainView = () => {
   const insets = useSafeArea();
   return (
     <Tab.Navigator
-      initialRouteName="Questlog"
+      initialRouteName="Map"
       swipeEnabled={false} // map is hard to use when swipe:abel
       tabBarOptions={{
         style: { backgroundColor: skyBlue.dark, elevation: 0, paddingTop: insets.top },
@@ -53,7 +53,7 @@ const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="MainView"
           screenOptions={{
             headerShown: false,
           }}>

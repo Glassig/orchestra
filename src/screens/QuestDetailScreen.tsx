@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import Layout from "./Layout";
 import { Quest } from "./../components/Quest/QuestInterfaces";
 import MText from "./../components/Utils/MText";
+import { TextLink } from "./../components/Utils/Link";
 import { skyBlue } from "../styling/colors";
 import Mountains from "./../styling/images/mission_detail.svg";
 
@@ -20,6 +21,14 @@ const QuestDetail: React.FC<{ route: any; navigation: any }> = ({ route, navigat
         <MText styles={styles.title}>{quest.title}</MText>
         <MText styles={styles.description}>{quest.description}</MText>
         {quest.map_circle && <MText>Position: {quest.map_circle}</MText>}
+        <TextLink
+          onPress={() =>
+            navigation.navigate("Map", {
+              position: { latitude: 17.998924, longitude: 59.364347 },
+            })
+          }>
+          Position: stuff
+        </TextLink>
         {quest.reward && <MText>Reward: {quest.reward}</MText>}
         <MText styles={styles.creator}>//{quest.creator.displayname}</MText>
       </View>

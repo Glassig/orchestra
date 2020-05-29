@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Dimensions, StyleSheet, View, Platform, Text } from "react-native";
+import { Dimensions, StyleSheet, View, Platform, Text, TouchableOpacity } from "react-native";
 import MapboxGL from "@react-native-mapbox-gl/maps";
 import Geolocation from "@react-native-community/geolocation";
 
@@ -7,12 +7,34 @@ import Marker from "./Marker";
 import { Position } from "./MapInterface";
 import UserDot from "./UserDot";
 import { MAPBOX_KEY } from "./../../../.env.js";
+import Locate_User_Icon from "./../../styling/images/locate_user.svg";
+import { skyBlue } from "./../../styling/colors";
 
 MapboxGL.setAccessToken(MAPBOX_KEY);
 MapboxGL.setConnected(true);
 
-const Mapbox = () => {
+const getUserPosition = (): Promise<Position> => {
+  return new Promise((resolve, _) => {
+    Geolocation.getCurrentPosition((info) => {
+      resolve({
+        latitude: info.coords.latitude,
+        longitude: info.coords.longitude,
+      });
+    });
+  });
+};
+
+const Mapbox: React.FC<{ marker?: Position }> = ({ marker }) => {
   const [permission, setPermission] = useState(false);
+  const [markerPosition, setMarkerPosition] = useState(
+    marker
+      ? marker
+      : {
+          latitude: 17.998924,
+          longitude: 59.363347,
+        }
+  );
+  // if (marker) setMarkerPosition(marker);
 
   useEffect(() => {
     const task = async () => {
@@ -25,13 +47,10 @@ const Mapbox = () => {
       }
     };
     task();
-    Geolocation.setRNConfiguration({});
+    Geolocation.setRNConfiguration({ skipPermissionRequests: false, authorizationLevel: "whenInUse" });
   }, []);
-  Geolocation.getCurrentPosition((info) => console.log(info));
-  const pos: Position = {
-    latitude: 17.998924,
-    longitude: 59.363347,
-  };
+
+  let camera: MapboxGL.Camera | null;
   return (
     <View style={styles.page}>
       <View style={styles.container}>
@@ -39,13 +58,34 @@ const Mapbox = () => {
           style={styles.map}
           styleURL={MapboxGL.StyleURL.Light}
           logoEnabled={false}
+          compassEnabled={true}
           attributionPosition={{ left: 8, bottom: 8 }} // The i in a circle position, it has to be present
         >
-          <MapboxGL.Camera followZoomLevel={14} followUserLocation={permission} />
+          <MapboxGL.Camera
+            ref={(ref) => {
+              camera = ref;
+              getUserPosition().then((pos) => {
+                camera?.setCamera({
+                  centerCoordinate: [pos.longitude, pos.latitude],
+                  animationDuration: 400,
+                  zoomLevel: 14,
+                });
+              });
+            }}
+          />
           {permission && <UserDot />}
 
-          <Marker position={pos} />
+          <Marker position={markerPosition} />
         </MapboxGL.MapView>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            getUserPosition().then((pos) => {
+              camera?.moveTo([pos.longitude, pos.latitude], 400);
+            });
+          }}>
+          <Locate_User_Icon />
+        </TouchableOpacity>
       </View>
       {permission && <Text>Permission enabled</Text>}
       {!permission && <Text>Permission disabled</Text>}
@@ -64,6 +104,19 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 1,
+    borderColor: "red",
+    borderWidth: 1,
+  },
+  button: {
+    zIndex: 100,
+    position: "absolute",
+    right: 8,
+    bottom: 8,
+    width: 26,
+    height: 26,
+    padding: 3,
+    borderRadius: 13,
+    backgroundColor: skyBlue.dark,
   },
 });
 
