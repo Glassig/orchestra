@@ -12,7 +12,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { SafeAreaProvider, useSafeArea } from "react-native-safe-area-context";
+import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import Home from "./screens/HomeScreen";
 import Questlog from "./screens/QuestlogScreen";
@@ -26,7 +26,8 @@ const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
 const MainView = () => {
-  const insets = useSafeArea();
+  const insets = useSafeAreaInsets();
+  console.log("hello insets: ", insets);
   return (
     <Tab.Navigator
       initialRouteName="Map"

@@ -5,7 +5,7 @@ import MapboxGL from "@react-native-mapbox-gl/maps";
 
 const Marker: React.FC<{ position: Position }> = ({ position }) => {
   return (
-    <MapboxGL.MarkerView coordinate={[position.latitude, position.longitude]}>
+    <MapboxGL.MarkerView id={position.latitude.toFixed(0)} coordinate={[position.latitude, position.longitude]}>
       <View style={styles.dot}></View>
     </MapboxGL.MarkerView>
   );

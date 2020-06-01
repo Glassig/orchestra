@@ -6,7 +6,7 @@ import { AppRegistry } from "react-native";
 import { ApolloProvider, ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import App from "./src/App";
 import { name as appName } from "./app.json";
-import { DB_HASURA_KEY, DB_HASURA_VALUE } from "./.env.js";
+import { DB_HASURA_KEY, DB_HASURA_VALUE } from "./env";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Dimensions, View, StatusBar } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { SvgProps } from "react-native-svg";
-import { SafeAreaView, useSafeArea } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Layout: React.FC<{
   gradient: string[];
@@ -10,9 +10,8 @@ const Layout: React.FC<{
   Mountains: React.FC<SvgProps>;
   children: React.ReactNode;
 }> = ({ gradient, mountainHeight, Mountains, children }) => {
-  const insets = useSafeArea();
   return (
-    <SafeAreaView style={{ ...styles.safeArea, paddingTop: insets.top }}>
+    <SafeAreaView style={{ ...styles.safeArea }}>
       <StatusBar backgroundColor={gradient[0]} animated={true} />
       <LinearGradient colors={[...gradient]} style={styles.linearGradient} />
       {children}
@@ -28,6 +27,7 @@ const styles = StyleSheet.create({
     height: "100%",
     paddingLeft: 20,
     paddingRight: 20,
+    paddingTop: 0,
   },
   linearGradient: {
     position: "absolute",

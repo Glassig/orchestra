@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Dimensions, StyleSheet, View, Platform, Text, TouchableOpacity } from "react-native";
 import MapboxGL from "@react-native-mapbox-gl/maps";
 import Geolocation from "@react-native-community/geolocation";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import Marker from "./Marker";
 import { Position } from "./MapInterface";
 import UserDot from "./UserDot";
-import { MAPBOX_KEY } from "./../../../.env.js";
+import { MAPBOX_KEY } from "../../../env";
 import Locate_User_Icon from "./../../styling/images/locate_user.svg";
 import { skyBlue } from "./../../styling/colors";
 
 MapboxGL.setAccessToken(MAPBOX_KEY);
-MapboxGL.setConnected(true);
+if (Platform.OS === "android") MapboxGL.setConnected(true);
 
 const getUserPosition = (): Promise<Position> => {
   return new Promise((resolve, _) => {
@@ -35,6 +36,7 @@ const Mapbox: React.FC<{ marker?: Position }> = ({ marker }) => {
         }
   );
   // if (marker) setMarkerPosition(marker);
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     const task = async () => {
@@ -53,7 +55,11 @@ const Mapbox: React.FC<{ marker?: Position }> = ({ marker }) => {
   let camera: MapboxGL.Camera | null;
   return (
     <View style={styles.page}>
-      <View style={styles.container}>
+      <View
+        style={{
+          ...styles.container,
+          height: Dimensions.get("window").height - 198 - 60 - (insets.bottom + insets.top),
+        }}>
         <MapboxGL.MapView
           style={styles.map}
           styleURL={MapboxGL.StyleURL.Light}
@@ -81,7 +87,11 @@ const Mapbox: React.FC<{ marker?: Position }> = ({ marker }) => {
           style={styles.button}
           onPress={() => {
             getUserPosition().then((pos) => {
-              camera?.moveTo([pos.longitude, pos.latitude], 400);
+              camera?.setCamera({
+                centerCoordinate: [pos.longitude, pos.latitude],
+                animationDuration: 400,
+                zoomLevel: 14,
+              });
             });
           }}>
           <Locate_User_Icon />
@@ -95,17 +105,15 @@ const Mapbox: React.FC<{ marker?: Position }> = ({ marker }) => {
 
 const styles = StyleSheet.create({
   page: {
-    flex: 1,
-    alignItems: "center",
+    flex: 2,
+    alignItems: "flex-start",
   },
   container: {
-    height: Dimensions.get("window").height - 198 - 60, // 198 for mountains, and 60 because random
+    // height: Dimensions.get("window").height - 198 - 60, // 198 for mountains, and 60 because random
     width: Dimensions.get("window").width - 40, // padding 20
   },
   map: {
     flex: 1,
-    borderColor: "red",
-    borderWidth: 1,
   },
   button: {
     zIndex: 100,
