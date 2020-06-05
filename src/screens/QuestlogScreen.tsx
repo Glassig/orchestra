@@ -49,7 +49,7 @@ const getQuests = gql`
 const Quests: React.FC<{ navigation: any }> = ({ navigation }) => {
   console.log("beep");
   const { loading, error, data } = useQuery(getQuests);
-  if (loading) return <ActivityIndicator color={"#f00"} />;
+  if (loading) return <ActivityIndicator color={"#000"} />;
   if (error) return <MText>ERROR! {error.message}</MText>;
   return data.quests.map((value: Quest) => (
     <ComponentLink
@@ -79,7 +79,7 @@ const Questlog: React.FC<{ navigation: any }> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   scrollview: {
-    backgroundColor: "transparent",
+    flex: 1,
   },
   paddingView: {
     height: svgHeight,

@@ -11,7 +11,7 @@ const Layout: React.FC<{
   children: React.ReactNode;
 }> = ({ gradient, mountainHeight, Mountains, children }) => {
   return (
-    <SafeAreaView style={{ ...styles.safeArea }}>
+    <SafeAreaView style={styles.safeArea}>
       <StatusBar backgroundColor={gradient[0]} animated={true} />
       <LinearGradient colors={[...gradient]} style={styles.linearGradient} />
       {children}
@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     paddingTop: 0,
+    alignItems: "flex-start",
+    flexDirection: "row",
   },
   linearGradient: {
     position: "absolute",

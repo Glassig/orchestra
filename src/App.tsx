@@ -27,7 +27,6 @@ const Tab = createMaterialTopTabNavigator();
 
 const MainView = () => {
   const insets = useSafeAreaInsets();
-  console.log("hello insets: ", insets);
   return (
     <Tab.Navigator
       initialRouteName="Map"
@@ -39,8 +38,9 @@ const MainView = () => {
         labelStyle: {
           fontFamily: "Montserrat-Medium",
           fontVariant: ["small-caps"],
-          fontSize: 18,
+          fontSize: 16,
         },
+        allowFontScaling: true,
       }}>
       <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Questlog" component={Questlog} />

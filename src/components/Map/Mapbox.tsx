@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Dimensions, StyleSheet, View, Platform, Text, TouchableOpacity } from "react-native";
+import { Dimensions, StyleSheet, View, Platform, Text, TouchableOpacity, PermissionsAndroid } from "react-native";
 import MapboxGL from "@react-native-mapbox-gl/maps";
 import Geolocation from "@react-native-community/geolocation";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -13,15 +13,23 @@ import { skyBlue } from "./../../styling/colors";
 
 MapboxGL.setAccessToken(MAPBOX_KEY);
 if (Platform.OS === "android") MapboxGL.setConnected(true);
+Geolocation.setRNConfiguration({ skipPermissionRequests: true, authorizationLevel: "always" });
 
 const getUserPosition = (): Promise<Position> => {
   return new Promise((resolve, _) => {
-    Geolocation.getCurrentPosition((info) => {
-      resolve({
-        latitude: info.coords.latitude,
-        longitude: info.coords.longitude,
-      });
-    });
+    Geolocation.getCurrentPosition(
+      (info) => {
+        resolve({
+          latitude: info.coords.latitude,
+          longitude: info.coords.longitude,
+        });
+      },
+      (error) => {
+        //ERROR HANDLING
+        console.error("ERROR: ", error);
+      },
+      { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true }
+    );
   });
 };
 
@@ -37,19 +45,22 @@ const Mapbox: React.FC<{ marker?: Position }> = ({ marker }) => {
   );
   // if (marker) setMarkerPosition(marker);
   const insets = useSafeAreaInsets();
+  const askForPermission = async () => {
+    if (Platform.OS === "android") {
+      const isGranted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, {
+        title: "Location Permission",
+        message: "Orchestra is dependent on where you are on a map, it will not work without it",
+        buttonPositive: "Accept",
+      });
+      // const isGranted = await MapboxGL.requestAndroidLocationPermissions();
+      setPermission(isGranted === PermissionsAndroid.RESULTS.GRANTED);
+    } else {
+      setPermission(true);
+    }
+  };
 
   useEffect(() => {
-    const task = async () => {
-      //need to call function on android
-      if (Platform.OS === "android" && Platform.Version > 23) {
-        const isGranted = await MapboxGL.requestAndroidLocationPermissions();
-        setPermission(isGranted);
-      } else {
-        setPermission(true);
-      }
-    };
-    task();
-    Geolocation.setRNConfiguration({ skipPermissionRequests: false, authorizationLevel: "whenInUse" });
+    askForPermission();
   }, []);
 
   let camera: MapboxGL.Camera | null;
@@ -85,7 +96,8 @@ const Mapbox: React.FC<{ marker?: Position }> = ({ marker }) => {
         </MapboxGL.MapView>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => {
+          onPress={async () => {
+            if (!permission) await askForPermission();
             getUserPosition().then((pos) => {
               camera?.setCamera({
                 centerCoordinate: [pos.longitude, pos.latitude],
